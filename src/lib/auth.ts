@@ -1,31 +1,24 @@
-import NextAuth from 'next-auth'
-import Twitter from 'next-auth/providers/twitter'
-import { DrizzleAdapter } from '@auth/drizzle-adapter'
-import { db } from './db'
-import { users, accounts, sessions, verificationTokens } from './db/schema'
+// Dev mode: mock auth — returns a fake user session
+// Replace with real NextAuth config for production
 
-export const { handlers, auth, signIn, signOut } = NextAuth({
-  adapter: DrizzleAdapter(db, {
-    usersTable: users,
-    accountsTable: accounts,
-    sessionsTable: sessions,
-    verificationTokensTable: verificationTokens,
-  }),
-  providers: [
-    Twitter({
-      clientId: process.env.AUTH_TWITTER_ID!,
-      clientSecret: process.env.AUTH_TWITTER_SECRET!,
-    }),
-  ],
-  callbacks: {
-    async session({ session, user }) {
-      if (session.user) {
-        session.user.id = user.id
-      }
-      return session
-    },
-  },
-  pages: {
-    signIn: '/login',
-  },
-})
+const DEV_USER = {
+  id: 'dev-user-001',
+  name: 'Dev User',
+  email: 'dev@noveaire.local',
+  image: null,
+}
+
+export async function auth() {
+  return {
+    user: DEV_USER,
+    expires: new Date(Date.now() + 86400000).toISOString(),
+  }
+}
+
+export const handlers = {
+  GET: async () => new Response('Dev mode', { status: 200 }),
+  POST: async () => new Response('Dev mode', { status: 200 }),
+}
+
+export const signIn = async () => {}
+export const signOut = async () => {}

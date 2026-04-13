@@ -1,8 +1,12 @@
 import { auth } from '@/lib/auth'
 import { getLatestUpload, getSuggestions } from '@/lib/db/queries'
 import { NextResponse } from 'next/server'
+import { isDev } from '@/lib/db'
+import { demoSuggestionsResponse } from '@/lib/demo-data'
 
 export async function GET() {
+  if (isDev) return NextResponse.json(demoSuggestionsResponse)
+
   const session = await auth()
   if (!session?.user?.id) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
 

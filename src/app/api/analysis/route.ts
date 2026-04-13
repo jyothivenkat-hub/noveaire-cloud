@@ -3,8 +3,12 @@ import { getLatestUpload, getPosts } from '@/lib/db/queries'
 import { analyzePosts } from '@/lib/analysis'
 import type { DbPost } from '@/lib/analysis'
 import { NextResponse } from 'next/server'
+import { isDev } from '@/lib/db'
+import { demoAnalysisResponse } from '@/lib/demo-data'
 
 export async function GET() {
+  if (isDev) return NextResponse.json(demoAnalysisResponse)
+
   const session = await auth()
   if (!session?.user?.id) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
 

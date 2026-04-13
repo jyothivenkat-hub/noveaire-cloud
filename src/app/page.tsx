@@ -14,12 +14,20 @@ export default function LandingPage() {
           Analyze your Twitter data, run AI experiments on your content, and generate
           high-performing posts with Claude.
         </p>
-        <Link
-          href="/login"
-          className="inline-flex items-center gap-2 px-6 py-3 bg-accent/10 text-accent rounded-lg text-sm hover:bg-accent/20 transition-colors"
-        >
-          Sign in with X
-        </Link>
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+          <Link
+            href="/dashboard"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-accent/10 text-accent rounded-lg text-sm hover:bg-accent/20 transition-colors"
+          >
+            Try Demo
+          </Link>
+          <Link
+            href="/login"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-white/[0.05] text-white/60 rounded-lg text-sm hover:bg-white/[0.08] transition-colors"
+          >
+            Sign in with X
+          </Link>
+        </div>
       </div>
     </div>
   )

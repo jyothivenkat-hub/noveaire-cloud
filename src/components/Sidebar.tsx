@@ -24,9 +24,14 @@ export function Sidebar() {
   return (
     <aside className="w-56 flex-shrink-0 border-r border-white/[0.06] flex flex-col">
       <div className="p-6 pb-2">
-        <h1 className="text-lg font-medium tracking-tight">
-          <span className="text-accent">Nove</span>aire
-        </h1>
+        <div className="flex items-center gap-2">
+          <h1 className="text-lg font-medium tracking-tight">
+            <span className="text-accent">Nove</span>aire
+          </h1>
+          <span className="text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded bg-accent/15 text-accent/70">
+            Demo
+          </span>
+        </div>
         <p className="text-[10px] uppercase tracking-[0.2em] text-white/30 mt-1">
           content intelligence
         </p>

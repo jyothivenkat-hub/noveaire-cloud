@@ -2,6 +2,19 @@
 
 Content intelligence platform for X/Twitter creators. Upload your Twitter analytics, get AI-powered insights, and generate high-performing content.
 
+## Demo Mode
+
+The app works out of the box with no configuration. Just clone and run:
+
+```bash
+git clone https://github.com/jyothivenkat-hub/noveaire-cloud.git
+cd noveaire-cloud
+npm install
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) and click **Try Demo** to explore the full dashboard with sample data. No API keys, database, or Twitter account needed.
+
 ## What It Does
 
 - **Upload & Analyze** -- Import your Twitter analytics CSV and get breakdowns of what's working: feature impact, post type performance, day-of-week patterns, top posts
@@ -18,15 +31,9 @@ Content intelligence platform for X/Twitter creators. Upload your Twitter analyt
 - **Auth:** NextAuth.js with Twitter OAuth
 - **Styling:** Tailwind CSS, Motion (animations), Lucide (icons)
 
-## Getting Started
+## Production Setup
 
-1. Clone the repo and install dependencies:
-
-```bash
-npm install
-```
-
-2. Copy the example env file and fill in your keys:
+To connect real data and AI features, copy the example env file and fill in your keys:
 
 ```bash
 cp .env.example .env.local
@@ -38,13 +45,7 @@ You'll need:
 - `DATABASE_URL` -- a Neon Postgres connection string
 - `ANTHROPIC_API_KEY` -- from the Anthropic Console
 
-3. Run the dev server:
-
-```bash
-npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) to use the app.
+When all env vars are configured, the app automatically switches from demo mode to live mode.
 
 ## Project Structure
 
@@ -52,6 +53,7 @@ Open [http://localhost:3000](http://localhost:3000) to use the app.
 src/
   app/           -- Pages and API routes (Next.js App Router)
   lib/           -- Core logic: analysis engine, Claude prompts, auth, DB
+    demo-data.ts -- Sample data for demo mode
   components/    -- Reusable UI components
   types/         -- TypeScript interfaces
 ```

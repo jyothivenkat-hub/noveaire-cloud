@@ -4,8 +4,12 @@ import { buildProfile } from '@/lib/analysis'
 import type { DbPost } from '@/lib/analysis'
 import { synthesizeResearch } from '@/lib/compose'
 import { NextResponse } from 'next/server'
+import { isDev } from '@/lib/db'
+import { demoComposeSynthesizeResponse } from '@/lib/demo-data'
 
 export async function POST(request: Request) {
+  if (isDev) return NextResponse.json(demoComposeSynthesizeResponse)
+
   const session = await auth()
   if (!session?.user?.id) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
 

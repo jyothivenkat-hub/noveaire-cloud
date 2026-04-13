@@ -1,6 +1,7 @@
 'use client'
 
 import { signIn } from 'next-auth/react'
+import Link from 'next/link'
 
 export default function LoginPage() {
   return (
@@ -23,8 +24,20 @@ export default function LoginPage() {
           Sign in with X
         </button>
 
-        <p className="text-xs text-white/20 mt-8">
-          Access is currently invite-only.
+        <div className="my-6 flex items-center gap-3">
+          <div className="flex-1 h-px bg-white/10" />
+          <span className="text-xs text-white/20">or</span>
+          <div className="flex-1 h-px bg-white/10" />
+        </div>
+
+        <Link
+          href="/dashboard"
+          className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-accent/10 border border-accent/20 rounded-lg text-sm text-accent hover:bg-accent/20 transition-colors"
+        >
+          Try Demo Mode
+        </Link>
+        <p className="text-xs text-white/20 mt-3">
+          Explore the dashboard with sample data — no account needed.
         </p>
       </div>
     </div>
