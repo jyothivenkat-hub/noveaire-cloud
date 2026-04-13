@@ -22,20 +22,20 @@ const tools: ToolConfig[] = [
     label: 'Breaking News',
     icon: Newspaper,
     placeholder: 'Paste the breaking news or event details...',
-    description: 'Generate tweet angles for breaking news',
+    description: 'Generate post angles for breaking news',
   },
   {
     id: 'research',
     label: 'Research Thread',
     icon: Layers,
     placeholder: 'Paste your research notes or article...',
-    description: 'Synthesize research into a Twitter thread',
+    description: 'Synthesize research into a content thread',
   },
   {
     id: 'reply',
     label: 'Reply Ideas',
     icon: MessageSquare,
-    placeholder: 'Paste the tweet you want to reply to...',
+    placeholder: 'Paste the post you want to reply to...',
     description: 'Generate thoughtful reply options',
   },
 ]

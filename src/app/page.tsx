@@ -5,7 +5,7 @@ const steps = [
   {
     icon: Upload,
     title: 'Upload your data',
-    description: 'Export your Twitter/X analytics CSV and upload it to Noveaire.',
+    description: 'Export your analytics CSV from any platform and upload it to Noveaire.',
   },
   {
     icon: BarChart3,
@@ -20,7 +20,7 @@ const steps = [
   {
     icon: Lightbulb,
     title: 'Get daily suggestions',
-    description: 'AI-generated tweet ideas tailored to your voice and audience.',
+    description: 'AI-generated post ideas tailored to your voice and audience.',
   },
   {
     icon: PenTool,
@@ -41,12 +41,13 @@ export default function LandingPage() {
         </p>
 
         <h2 className="text-xl font-light text-white/80 mb-4">
-          Turn your Twitter/X analytics into actionable content strategy
+          Turn your social media analytics into actionable content strategy
         </h2>
         <p className="text-white/40 text-sm leading-relaxed mb-12 max-w-lg mx-auto">
-          Noveaire analyzes your Twitter performance data, identifies what makes your
-          content work, and uses Claude AI to generate high-performing posts matched
-          to your voice and audience. Upload a CSV, get insights in seconds.
+          Noveaire analyzes your performance data from X, LinkedIn, Instagram, Threads,
+          and more — identifies what makes your content work, and uses Claude AI to
+          generate high-performing posts matched to your voice and audience.
+          Upload a CSV or connect your accounts, get insights in seconds.
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-16">

@@ -38,7 +38,7 @@ export default function DashboardPage() {
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center py-20">
         <Upload className="w-12 h-12 text-white/20 mx-auto mb-4" />
         <h2 className="text-xl font-light mb-2">No data yet</h2>
-        <p className="text-white/40 mb-6 text-sm">Upload your Twitter analytics CSV to get started.</p>
+        <p className="text-white/40 mb-6 text-sm">Upload your social media analytics CSV to get started.</p>
         <Link href="/upload" className="inline-flex items-center gap-2 px-5 py-2.5 bg-accent/10 text-accent rounded-lg text-sm hover:bg-accent/20 transition-colors">
           Upload Data <ArrowRight className="w-4 h-4" />
         </Link>
@@ -54,7 +54,7 @@ export default function DashboardPage() {
       <div className="mb-8">
         <h2 className="text-2xl font-light tracking-tight">Dashboard</h2>
         <p className="text-white/40 text-sm mt-1">
-          Noveaire turns your Twitter/X analytics into content strategy — upload your data, see what works, and let AI generate your next posts.
+          Noveaire turns your social media analytics into content strategy — upload data from X, LinkedIn, Instagram, Threads, or any platform, see what works, and let AI generate your next posts.
         </p>
       </div>
 
@@ -62,10 +62,10 @@ export default function DashboardPage() {
         <h3 className="text-xs uppercase tracking-[0.15em] text-white/30 mb-4">How to use Noveaire</h3>
         <div className="grid grid-cols-5 gap-3">
           {[
-            { step: '01', label: 'Upload', desc: 'Import your X analytics CSV', href: '/upload', icon: Upload },
+            { step: '01', label: 'Upload', desc: 'Import analytics from any platform', href: '/upload', icon: Upload },
             { step: '02', label: 'Analyze', desc: 'See what drives performance', href: '/analysis', icon: BarChart3 },
             { step: '03', label: 'Experiment', desc: 'Test content strategies with AI', href: '/experiments', icon: FlaskConical },
-            { step: '04', label: 'Suggestions', desc: 'Get daily tweet ideas', href: '/suggestions', icon: Lightbulb },
+            { step: '04', label: 'Suggestions', desc: 'Get daily post ideas', href: '/suggestions', icon: Lightbulb },
             { step: '05', label: 'Compose', desc: 'Create threads & replies', href: '/compose', icon: PenTool },
           ].map((item) => (
             <Link key={item.href} href={item.href} className="group p-3 rounded-lg hover:bg-white/[0.04] transition-colors text-center">

@@ -52,7 +52,7 @@ export default function UploadPage() {
     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3 }}>
       <div className="mb-8">
         <h2 className="text-2xl font-light tracking-tight">Upload Data</h2>
-        <p className="text-white/40 text-sm mt-1">Upload your Twitter analytics CSV export</p>
+        <p className="text-white/40 text-sm mt-1">Upload your analytics CSV from any social media platform</p>
       </div>
 
       <Card className="max-w-xl mx-auto">
@@ -109,6 +109,10 @@ export default function UploadPage() {
               <span key={col} className="text-xs px-2 py-1 rounded bg-white/[0.05] text-white/40 font-mono">{col}</span>
             ))}
           </div>
+          <p className="text-xs text-white/20 mt-3">
+            Works with exports from X/Twitter, LinkedIn, Instagram, Threads, and more.
+            Just make sure your CSV has the columns above.
+          </p>
         </div>
       </Card>
     </motion.div>

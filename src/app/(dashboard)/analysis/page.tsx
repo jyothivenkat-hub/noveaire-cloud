@@ -39,7 +39,7 @@ export default function AnalysisPage() {
       <div className="text-center py-20">
         <Upload className="w-12 h-12 text-white/20 mx-auto mb-4" />
         <h2 className="text-xl font-light mb-2">No analysis available</h2>
-        <p className="text-white/40 mb-6 text-sm">Upload your data first.</p>
+        <p className="text-white/40 mb-6 text-sm">Upload your social media data first.</p>
         <Link href="/upload" className="inline-flex items-center gap-2 px-5 py-2.5 bg-accent/10 text-accent rounded-lg text-sm hover:bg-accent/20 transition-colors">
           Upload Data <ArrowRight className="w-4 h-4" />
         </Link>

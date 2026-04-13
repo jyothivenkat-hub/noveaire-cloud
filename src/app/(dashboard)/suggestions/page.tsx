@@ -75,7 +75,7 @@ export default function SuggestionsPage() {
       <div className="flex items-center justify-between mb-8">
         <div>
           <h2 className="text-2xl font-light tracking-tight">Suggestions</h2>
-          <p className="text-white/40 text-sm mt-1">AI-generated tweet suggestions based on your analytics</p>
+          <p className="text-white/40 text-sm mt-1">AI-generated post suggestions based on your analytics</p>
         </div>
         <button
           onClick={handleGenerate}
@@ -104,7 +104,7 @@ export default function SuggestionsPage() {
         <div className="text-center py-20">
           <Lightbulb className="w-12 h-12 text-white/20 mx-auto mb-4" />
           <h3 className="text-lg font-light mb-2">No suggestions yet</h3>
-          <p className="text-white/40 text-sm">Click &quot;Generate New&quot; to create AI-powered tweet suggestions.</p>
+          <p className="text-white/40 text-sm">Click &quot;Generate New&quot; to create AI-powered post suggestions.</p>
         </div>
       ) : (
         <>

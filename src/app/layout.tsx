@@ -3,7 +3,7 @@ import './globals.css'
 
 export const metadata: Metadata = {
   title: 'Noveaire — Content Intelligence',
-  description: 'AI-powered Twitter content analysis and generation platform',
+  description: 'AI-powered social media content analysis and generation platform',
 }
 
 export default function RootLayout({
