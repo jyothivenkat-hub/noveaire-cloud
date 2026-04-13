@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { motion } from 'motion/react'
 import {
   Eye, Heart, UserPlus, FileText, ArrowRight,
-  Upload, BarChart3, FlaskConical, Lightbulb,
+  Upload, BarChart3, FlaskConical, Lightbulb, PenTool,
 } from 'lucide-react'
 import { Stat } from '@/components/Stat'
 import { Card } from '@/components/Card'
@@ -53,7 +53,31 @@ export default function DashboardPage() {
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.3 }}>
       <div className="mb-8">
         <h2 className="text-2xl font-light tracking-tight">Dashboard</h2>
-        <p className="text-white/40 text-sm mt-1">Overview of your content performance</p>
+        <p className="text-white/40 text-sm mt-1">
+          Noveaire turns your Twitter/X analytics into content strategy — upload your data, see what works, and let AI generate your next posts.
+        </p>
+      </div>
+
+      <div className="mb-8 p-5 rounded-xl bg-white/[0.02] border border-white/[0.06]">
+        <h3 className="text-xs uppercase tracking-[0.15em] text-white/30 mb-4">How to use Noveaire</h3>
+        <div className="grid grid-cols-5 gap-3">
+          {[
+            { step: '01', label: 'Upload', desc: 'Import your X analytics CSV', href: '/upload', icon: Upload },
+            { step: '02', label: 'Analyze', desc: 'See what drives performance', href: '/analysis', icon: BarChart3 },
+            { step: '03', label: 'Experiment', desc: 'Test content strategies with AI', href: '/experiments', icon: FlaskConical },
+            { step: '04', label: 'Suggestions', desc: 'Get daily tweet ideas', href: '/suggestions', icon: Lightbulb },
+            { step: '05', label: 'Compose', desc: 'Create threads & replies', href: '/compose', icon: PenTool },
+          ].map((item) => (
+            <Link key={item.href} href={item.href} className="group p-3 rounded-lg hover:bg-white/[0.04] transition-colors text-center">
+              <div className="w-8 h-8 rounded-lg bg-accent/[0.07] border border-accent/10 flex items-center justify-center mx-auto mb-2">
+                <item.icon className="w-3.5 h-3.5 text-accent/50 group-hover:text-accent/80 transition-colors" />
+              </div>
+              <span className="text-[10px] font-mono text-accent/30">{item.step}</span>
+              <p className="text-xs font-medium text-white/70 group-hover:text-white/90 transition-colors">{item.label}</p>
+              <p className="text-[10px] text-white/25 mt-0.5 leading-tight">{item.desc}</p>
+            </Link>
+          ))}
+        </div>
       </div>
 
       <div className="grid grid-cols-4 gap-4 mb-8">
