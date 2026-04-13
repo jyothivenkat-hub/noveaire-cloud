@@ -51,7 +51,7 @@ export async function GET() {
   }
 
   // Map suggestions to expected shape
-  const mappedSuggestions = suggestions.map((s) => ({
+  const mappedSuggestions = suggestions.map((s: any) => ({
     id: s.id,
     upload_id: s.uploadId,
     tweet_text: s.tweetText,

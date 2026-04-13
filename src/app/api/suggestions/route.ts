@@ -15,7 +15,7 @@ export async function GET() {
   const suggestions = upload ? await getSuggestions(upload.id, userId) : []
 
   return NextResponse.json({
-    suggestions: suggestions.map((s) => ({
+    suggestions: suggestions.map((s: any) => ({
       id: s.id,
       upload_id: s.uploadId,
       tweet_text: s.tweetText,
