@@ -2,9 +2,9 @@
 
 Content intelligence platform for social media creators. Upload your analytics from X, LinkedIn, Instagram, Threads, or any platform — get AI-powered insights and generate high-performing content.
 
-## Demo Mode
+## Quick Start
 
-The app works out of the box with no configuration. Just clone and run:
+Clone and run — no API keys, database, or accounts needed:
 
 ```bash
 git clone https://github.com/jyothivenkat-hub/noveaire-cloud.git
@@ -13,7 +13,7 @@ npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) and click **Try Demo** to explore the full dashboard with sample data. No API keys, database, or accounts needed.
+Open [http://localhost:3000](http://localhost:3000) and click **Explore Dashboard** to see the full app with sample data.
 
 ## What It Does
 
@@ -38,7 +38,6 @@ Open [http://localhost:3000](http://localhost:3000) and click **Try Demo** to ex
 - **Framework:** Next.js (App Router), React, TypeScript
 - **AI:** Anthropic Claude API (Sonnet)
 - **Database:** PostgreSQL (Neon) with Drizzle ORM
-- **Auth:** NextAuth.js with social OAuth
 - **Styling:** Tailwind CSS, Motion (animations), Lucide (icons)
 
 ## Production Setup
@@ -51,7 +50,6 @@ cp .env.example .env.local
 
 You'll need:
 - `AUTH_SECRET` -- generate with `openssl rand -base64 32`
-- `AUTH_TWITTER_ID` / `AUTH_TWITTER_SECRET` -- from the X Developer Portal (more providers coming)
 - `DATABASE_URL` -- a Neon Postgres connection string
 - `ANTHROPIC_API_KEY` -- from the Anthropic Console
 
