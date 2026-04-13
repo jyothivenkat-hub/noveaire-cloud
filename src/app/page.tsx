@@ -25,7 +25,7 @@ const steps = [
   {
     icon: PenTool,
     title: 'Compose with AI',
-    description: 'Create threads, replies, and breaking news posts using Claude.',
+    description: 'Create threads, replies, and breaking news posts using AI.',
   },
 ]
 
@@ -45,8 +45,8 @@ export default function LandingPage() {
         </h2>
         <p className="text-white/40 text-sm leading-relaxed mb-12 max-w-lg mx-auto">
           Noveaire analyzes your performance data from X, LinkedIn, Instagram, Threads,
-          and more — identifies what makes your content work, and uses Claude AI to
-          generate high-performing posts matched to your voice and audience.
+          and more — identifies what makes your content work, and uses AI to
+          generate high performing posts matched to your voice and audience.
           Upload a CSV or connect your accounts, get insights in seconds.
         </p>
 
