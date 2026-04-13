@@ -1,0 +1,123 @@
+'use client'
+
+import { useState, useEffect } from 'react'
+import Link from 'next/link'
+import { motion } from 'motion/react'
+import {
+  Eye, Heart, UserPlus, FileText, ArrowRight,
+  Upload, BarChart3, FlaskConical, Lightbulb,
+} from 'lucide-react'
+import { Stat } from '@/components/Stat'
+import { Card } from '@/components/Card'
+import { api } from '@/api/client'
+import { formatNumber } from '@/lib/utils'
+import type { StatsResponse } from '@/types'
+
+export default function DashboardPage() {
+  const [data, setData] = useState<StatsResponse | null>(null)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
+
+  useEffect(() => {
+    api.getStats()
+      .then(setData)
+      .catch((e) => setError(e.message))
+      .finally(() => setLoading(false))
+  }, [])
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center h-64">
+        <div className="w-6 h-6 border-2 border-accent/30 border-t-accent rounded-full animate-spin" />
+      </div>
+    )
+  }
+
+  if (error || !data?.upload || !data?.analysis) {
+    return (
+      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center py-20">
+        <Upload className="w-12 h-12 text-white/20 mx-auto mb-4" />
+        <h2 className="text-xl font-light mb-2">No data yet</h2>
+        <p className="text-white/40 mb-6 text-sm">Upload your Twitter analytics CSV to get started.</p>
+        <Link href="/upload" className="inline-flex items-center gap-2 px-5 py-2.5 bg-accent/10 text-accent rounded-lg text-sm hover:bg-accent/20 transition-colors">
+          Upload Data <ArrowRight className="w-4 h-4" />
+        </Link>
+      </motion.div>
+    )
+  }
+
+  const { analysis, experiments, suggestions } = data
+  const { summary } = analysis
+
+  return (
+    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.3 }}>
+      <div className="mb-8">
+        <h2 className="text-2xl font-light tracking-tight">Dashboard</h2>
+        <p className="text-white/40 text-sm mt-1">Overview of your content performance</p>
+      </div>
+
+      <div className="grid grid-cols-4 gap-4 mb-8">
+        <Stat label="Posts" value={formatNumber(summary.total_posts)} icon={FileText} />
+        <Stat label="Impressions" value={formatNumber(summary.total_impressions)} icon={Eye} />
+        <Stat label="Likes" value={formatNumber(summary.total_likes)} icon={Heart} />
+        <Stat label="Follows" value={formatNumber(summary.total_follows)} icon={UserPlus} />
+      </div>
+
+      <div className="grid grid-cols-2 gap-6 mb-8">
+        <Card>
+          <h3 className="text-sm font-medium text-white/60 mb-4 uppercase tracking-wider">Top Posts</h3>
+          <div className="space-y-3">
+            {analysis.top_by_impressions.slice(0, 5).map((post, i) => (
+              <div key={i} className="flex items-start gap-3 p-3 rounded-lg bg-white/[0.02]">
+                <span className="text-xs text-accent/60 font-mono mt-0.5">{String(i + 1).padStart(2, '0')}</span>
+                <div className="flex-1 min-w-0">
+                  <p className="text-sm text-white/80 line-clamp-2">{post['Post text']}</p>
+                  <div className="flex gap-4 mt-1.5">
+                    <span className="text-xs text-white/30">{formatNumber(post.Impressions)} views</span>
+                    <span className="text-xs text-white/30">{formatNumber(post.Likes)} likes</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </Card>
+
+        <div className="space-y-6">
+          <Card>
+            <h3 className="text-sm font-medium text-white/60 mb-4 uppercase tracking-wider">Quick Actions</h3>
+            <div className="grid grid-cols-2 gap-3">
+              {[
+                { href: '/analysis', label: 'Analysis', icon: BarChart3 },
+                { href: '/experiments', label: 'Experiments', icon: FlaskConical },
+                { href: '/suggestions', label: 'Suggestions', icon: Lightbulb },
+                { href: '/upload', label: 'New Upload', icon: Upload },
+              ].map((action) => (
+                <Link key={action.href} href={action.href} className="flex items-center gap-2 p-3 rounded-lg bg-white/[0.02] hover:bg-white/[0.06] transition-colors text-sm text-white/60 hover:text-white/90">
+                  <action.icon className="w-4 h-4" />
+                  {action.label}
+                </Link>
+              ))}
+            </div>
+          </Card>
+
+          {suggestions.length > 0 && (
+            <Card>
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="text-sm font-medium text-white/60 uppercase tracking-wider">Unused Suggestions</h3>
+                <Link href="/suggestions" className="text-xs text-accent/60 hover:text-accent">View all</Link>
+              </div>
+              <div className="space-y-2">
+                {suggestions.slice(0, 3).map((s) => (
+                  <div key={s.id} className="p-3 rounded-lg bg-white/[0.02]">
+                    <p className="text-sm text-white/70 line-clamp-2">{s.tweet_text}</p>
+                    <span className="text-xs text-accent/40 mt-1 inline-block">{s.strategy}</span>
+                  </div>
+                ))}
+              </div>
+            </Card>
+          )}
+        </div>
+      </div>
+    </motion.div>
+  )
+}
